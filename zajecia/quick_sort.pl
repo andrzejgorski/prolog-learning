@@ -73,3 +73,21 @@ flatten([E|L], A, F):-
 
 flatten([], A, A).
 flatten(X, A, [X|A]).
+
+%suma
+
+add(x, X, X).
+add(s(X), Y, s(Z)):- add(X, Y, Z).
+
+add(liczba(I1, J1), liczba(I2, J2), liczba(I3, J3)):-
+    add(I1, I2, I3),
+    add(J1, J2, J3).
+
+suma(L, W):-
+    suma(L, liczba(x, x), W).
+
+suma([X|L], A, W):-
+    add(X, A, WX),
+    suma(L, WX, W).
+
+suma([], X, X).
