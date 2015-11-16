@@ -71,3 +71,7 @@ fp([c|L], C, F):-
 
 %slowo
 
+slowo(X):- slowo(X, []).
+slowo([a|X], B):- slowo(X, [b|B]).
+
+slowo(X, X).
