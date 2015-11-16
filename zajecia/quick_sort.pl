@@ -49,12 +49,27 @@ qsorta([X|L], A, S):-
     qsorta(WR, A, SWR),
     qsorta(M, [X|SWR], S).
 
-
 %cw domowe poprawic qsorta
 %zadanie 3 z moodla
 
+%append_flatten
+append_flatten([], []).
+append_flatten(X, [X]).
+
+append_flatten([X|L], F):-
+    append_flatten(X, XF),
+    append_flatten(L, LF),
+    append(XF, LF, F).
 
 %flatten
+flatten(L, L1):-
+    flatten(L, [], L1).
 
-flatten([], []).
-flatten([], X, X).
+flatten([], [], []).
+
+flatten([E|L], A, F):-
+    flatten(L, A, LF),
+    flatten(E, LF, F).
+
+flatten([], A, A).
+flatten(X, A, [X|A]).
